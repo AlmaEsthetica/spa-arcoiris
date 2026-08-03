@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spa Arcoíris — Claudia Olarte | Providencia, Santiago</title>
+<meta name="description" content="Manicura, pedicura y lifting de pestañas en Providencia, a pasos del Metro Los Leones. Cuidado personal y cercano desde 2018, con Claudia Olarte.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;0,600;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --turquoise:#1A86B4;
+    --teal:#189291;
+    --navy:#0B3D5C;
+    --navy-deep:#062A40;
+    --magenta:#ED66BA;
+    --orange:#F4A93B;
+    --purple:#8B5FBF;
+    --green:#3FAE72;
+    --cream:#F5FAF9;
+    --white:#FFFFFF;
+    --ink:#123244;
+    --ink-soft:#3F6270;
+    --radius-lg:28px;
+    --radius-md:18px;
+    --shadow-soft:0 20px 45px -25px rgba(11,61,92,0.35);
+    --max:1120px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Manrope', sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0 0 .4em 0;
+    color:var(--navy-deep);
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 24px;}
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:2px;
+    background:linear-gradient(90deg,var(--magenta),var(--orange));
+    border-radius:2px;
+  }
+  .ribbon-rule{
+    width:64px; height:4px; border-radius:4px;
+    background:linear-gradient(90deg,var(--turquoise),var(--magenta) 45%,var(--orange) 75%,var(--green));
+    margin:14px 0 30px 0;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 26px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:.98rem;
+    text-decoration:none;
+    transition:transform .18s ease, box-shadow .18s ease;
+    border:2px solid transparent;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn:focus-visible{outline:3px solid var(--orange); outline-offset:3px;}
+  .btn-primary{
+    background:var(--navy-deep);
+    color:var(--white);
+    box-shadow:0 14px 30px -12px rgba(6,42,64,0.55);
+  }
+  .btn-primary:hover{background:var(--turquoise);}
+  .btn-ghost{
+    background:transparent;
+    border-color:var(--navy-deep);
+    color:var(--navy-deep);
+  }
+  .btn-ghost:hover{background:var(--navy-deep); color:var(--white);}
+  .btn-sm{padding:10px 18px; font-size:.85rem;}
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(245,250,249,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(11,61,92,0.08);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 0;
+  }
+  .brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
+  .brand img{width:42px; height:42px; object-fit:contain;}
+  .brand-name{font-family:'Fraunces', serif; font-weight:600; color:var(--navy-deep); font-size:1.05rem;}
+  .nav-links{display:flex; align-items:center; gap:26px; font-weight:600; font-size:.92rem;}
+  .nav-links a{text-decoration:none; color:var(--ink-soft);}
+  .nav-links a:hover{color:var(--teal);}
+  .nav-links .links-group{display:flex; gap:26px;}
+  @media (max-width:760px){
+    .links-group{display:none;}
+  }
+
+  /* Hero */
+  .hero{
+    position:relative;
+    padding:64px 0 0 0;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:48px;
+    align-items:center;
+    padding-bottom:90px;
+  }
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr; text-align:center;}
+    .hero-actions{justify-content:center;}
+    .hero-badges{justify-content:center;}
+  }
+  .hero h1{
+    font-size:clamp(2.2rem, 4.4vw, 3.4rem);
+    line-height:1.08;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--teal);
+    font-weight:500;
+  }
+  .hero p.lead{
+    font-size:1.12rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+    margin:0 0 30px 0;
+  }
+  @media (max-width:860px){ .hero p.lead{margin-inline:auto;} }
+  .hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-bottom:26px;}
+  .hero-badges{display:flex; gap:22px; flex-wrap:wrap; font-size:.85rem; color:var(--ink-soft); font-weight:600;}
+  .hero-badges span{display:flex; align-items:center; gap:8px;}
+  .dot{width:8px; height:8px; border-radius:50%; background:var(--magenta); display:inline-block;}
+
+  .hero-art{
+    position:relative;
+    display:flex; justify-content:center; align-items:center;
+  }
+  .hero-art .ring{
+    width:min(360px, 80vw);
+    aspect-ratio:1;
+    border-radius:50%;
+    background:
+      radial-gradient(circle at 30% 25%, rgba(237,102,186,0.35), transparent 60%),
+      radial-gradient(circle at 70% 75%, rgba(26,134,180,0.35), transparent 60%),
+      var(--white);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:var(--shadow-soft);
+  }
+  .hero-art img{width:66%;}
+
+  .wave-divider{
+    display:block; width:100%; height:auto;
+    margin-top:-2px;
+  }
+
+  section{padding:86px 0;}
+  .section-alt{background:var(--white);}
+
+  /* Quiénes somos */
+  .about{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:56px;
+    align-items:center;
+  }
+  @media (max-width:820px){ .about{grid-template-columns:1fr;} }
+  .about-photo{
+    width:100%;
+    aspect-ratio:1;
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    box-shadow:var(--shadow-soft);
+    position:relative;
+  }
+  .about-photo::after{
+    content:"";
+    position:absolute; inset:0;
+    border-radius:var(--radius-lg);
+    box-shadow:inset 0 0 0 6px rgba(255,255,255,0.5);
+    pointer-events:none;
+  }
+  .about-photo img{
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center 25%;
+  }
+  .about-copy p{color:var(--ink-soft); font-size:1.04rem; max-width:56ch;}
+  .signature{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--magenta);
+    font-size:1.1rem;
+    margin-top:18px;
+  }
+
+  /* Servicios */
+  .services-head{max-width:640px; margin:0 auto 48px auto; text-align:center;}
+  .services-head .ribbon-rule{margin-inline:auto;}
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:26px;
+  }
+  @media (max-width:860px){ .cards{grid-template-columns:1fr;} }
+  .card{
+    background:var(--white);
+    border-radius:var(--radius-md);
+    padding:32px 26px;
+    box-shadow:var(--shadow-soft);
+    display:flex; flex-direction:column; gap:14px;
+    border-top:4px solid var(--turquoise);
+    transition:transform .2s ease;
+  }
+  .card:nth-child(2){border-top-color:var(--magenta);}
+  .card:nth-child(3){border-top-color:var(--orange);}
+  .card:hover{transform:translateY(-6px);}
+  .icon-badge{
+    width:52px; height:52px; border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--cream);
+  }
+  .icon-badge svg{width:26px; height:26px;}
+  .card h3{font-size:1.2rem; margin-bottom:2px;}
+  .card p{color:var(--ink-soft); font-size:.96rem; flex-grow:1;}
+  .card .btn{align-self:flex-start; margin-top:6px;}
+
+  /* Precios / servicios en formato carta */
+  .price-groups{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:24px;
+  }
+  @media (max-width:820px){ .price-groups{grid-template-columns:1fr;} }
+  .price-card{
+    background:var(--white);
+    border-radius:var(--radius-md);
+    padding:30px 28px;
+    box-shadow:var(--shadow-soft);
+    border-top:4px solid var(--turquoise);
+  }
+  .price-card:nth-of-type(2){border-top-color:var(--magenta);}
+  .price-card:nth-of-type(3){border-top-color:var(--orange);}
+  .price-card:nth-of-type(4){border-top-color:var(--green);}
+  .price-card-head{
+    display:flex; align-items:center; gap:12px;
+    margin-bottom:18px;
+  }
+  .price-card-head h3{margin:0; font-size:1.1rem;}
+  .price-list{list-style:none; margin:0; padding:0;}
+  .price-row{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    padding:11px 0;
+    border-bottom:1px dashed rgba(11,61,92,0.15);
+  }
+  .price-row:last-child{border-bottom:none;}
+  .price-row .name{
+    font-weight:600;
+    color:var(--navy-deep);
+    font-size:.95rem;
+  }
+  .price-row .name small{
+    display:block;
+    font-weight:500;
+    color:var(--ink-soft);
+    font-size:.8rem;
+    margin-top:2px;
+  }
+  .price-row .fill{
+    flex:1;
+    border-bottom:1px dotted rgba(11,61,92,0.3);
+    transform:translateY(-4px);
+  }
+  .price-row .price{
+    font-weight:800;
+    color:var(--teal);
+    font-size:.95rem;
+    white-space:nowrap;
+  }
+  .price-extra{
+    margin-top:18px;
+    padding-top:16px;
+    border-top:1px solid rgba(11,61,92,0.1);
+    font-size:.88rem;
+    color:var(--ink-soft);
+  }
+  .price-extra strong{color:var(--navy-deep);}
+  .price-note{
+    text-align:center;
+    max-width:640px;
+    margin:36px auto 0 auto;
+    font-size:.9rem;
+    color:var(--ink-soft);
+  }
+
+  /* Galería */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:18px;
+  }
+  @media (max-width:760px){ .gallery-grid{grid-template-columns:repeat(2,1fr);} }
+  .gallery-item{
+    aspect-ratio:1;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 12px 26px -18px rgba(11,61,92,0.5);
+    transition:transform .25s ease;
+  }
+  .gallery-item:hover{transform:translateY(-4px) scale(1.02);}
+  .gallery-item img{
+    width:100%; height:100%;
+    object-fit:cover;
+  }
+  .gallery-note{
+    text-align:center; font-size:.88rem; color:var(--ink-soft);
+    margin-top:22px;
+  }
+
+  /* Testimonios */
+  .testimonial{
+    max-width:720px; margin:0 auto;
+    background:var(--navy-deep);
+    color:var(--white);
+    border-radius:var(--radius-lg);
+    padding:48px 40px;
+    position:relative;
+    text-align:center;
+  }
+  @media (max-width:600px){ .testimonial{padding:36px 24px;} }
+  .testimonial .quote-mark{
+    font-family:'Fraunces', serif;
+    font-size:3.5rem;
+    color:var(--orange);
+    line-height:0;
+    display:block;
+    margin-bottom:14px;
+  }
+  .testimonial p.quote{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:300;
+    font-size:1.28rem;
+    line-height:1.55;
+    margin:0 0 22px 0;
+  }
+  .testimonial .who{font-weight:700; color:var(--orange); font-size:.95rem;}
+  .testimonial .who span{color:rgba(255,255,255,0.65); font-weight:500; display:block; font-size:.82rem; margin-top:2px;}
+
+  /* FAQ */
+  .faq{max-width:760px; margin:0 auto;}
+  details{
+    background:var(--white);
+    border-radius:14px;
+    padding:6px 22px;
+    margin-bottom:12px;
+    box-shadow:0 8px 20px -16px rgba(11,61,92,0.4);
+  }
+  summary{
+    cursor:pointer;
+    padding:16px 0;
+    font-weight:700;
+    color:var(--navy-deep);
+    list-style:none;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{
+    content:"+";
+    font-size:1.4rem;
+    color:var(--teal);
+    flex-shrink:0;
+    transition:transform .2s ease;
+  }
+  details[open] summary::after{transform:rotate(45deg);}
+  details p{color:var(--ink-soft); margin:0 0 18px 0; font-size:.96rem;}
+
+  /* Contacto */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:stretch;
+  }
+  @media (max-width:860px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact-info{
+    background:var(--white);
+    border-radius:var(--radius-lg);
+    padding:36px;
+    box-shadow:var(--shadow-soft);
+  }
+  .info-row{
+    display:flex; gap:16px; align-items:flex-start;
+    padding:16px 0;
+    border-bottom:1px solid rgba(11,61,92,0.08);
+  }
+  .info-row:last-of-type{border-bottom:none;}
+  .info-row .icon-badge{background:var(--cream); flex-shrink:0;}
+  .info-row h4{margin:0 0 4px 0; font-size:.95rem; color:var(--navy-deep); font-family:'Manrope'; font-weight:800;}
+  .info-row p{margin:0; color:var(--ink-soft); font-size:.92rem;}
+  .info-row a{text-decoration:none; color:var(--teal); font-weight:700;}
+  .map-frame{
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    box-shadow:var(--shadow-soft);
+    min-height:340px;
+  }
+  .map-frame iframe{width:100%; height:100%; min-height:340px; border:0;}
+  .contact-cta{text-align:center; margin-top:40px;}
+  .contact-cta .btn{padding:18px 36px; font-size:1.05rem;}
+
+  /* Footer */
+  footer{
+    background:var(--navy-deep);
+    color:rgba(255,255,255,0.75);
+    padding:48px 0 28px 0;
+  }
+  .footer-grid{
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:24px;
+    padding-bottom:26px;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+  }
+  .footer-brand{display:flex; align-items:center; gap:12px;}
+  .footer-brand img{width:40px; height:40px;}
+  .footer-brand strong{font-family:'Fraunces', serif; color:var(--white); font-size:1.05rem;}
+  .footer-social{display:flex; gap:14px;}
+  .footer-social a{
+    width:38px; height:38px; border-radius:50%;
+    background:rgba(255,255,255,0.08);
+    display:flex; align-items:center; justify-content:center;
+    text-decoration:none;
+  }
+  .footer-social a:hover{background:var(--teal);}
+  .footer-social svg{width:18px; height:18px;}
+  .footer-bottom{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    padding-top:22px; font-size:.82rem;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .btn, .card{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <img src="assets/logo.png" alt="Logo Spa Arcoíris">
+      <span class="brand-name">Spa Arcoíris</span>
+    </a>
+    <nav class="nav-links">
+      <div class="links-group">
+        <a href="#servicios">Servicios</a>
+        <a href="#testimonios">Testimonios</a>
+        <a href="#contacto">Ubicación</a>
+      </div>
+      <a class="btn btn-primary btn-sm" href="https://wa.me/56965279358?text=Hola%20Claudia%2C%20quiero%20agendar%20una%20hora%20en%20Spa%20Arco%C3%ADris" target="_blank" rel="noopener">Agendar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Aquí el cuidado <em>también</em> se siente.</h1>
+        <p class="lead">Desde 2018, Claudia Olarte convierte cada cita en una pausa de verdad: manos, pies y pestañas cuidados con calma, en medio de tu semana de oficina.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/56965279358?text=Hola%20Claudia%2C%20quiero%20agendar%20una%20hora%20en%20Spa%20Arco%C3%ADris" target="_blank" rel="noopener">
+            Agenda por WhatsApp
+          </a>
+          <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+        </div>
+        <div class="hero-badges">
+          <span><i class="dot"></i>Atendemos mujeres y hombres</span>
+          <span><i class="dot" style="background:var(--turquoise)"></i>A pasos del Metro Los Leones</span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="ring">
+          <img src="assets/logo.png" alt="Spa Arcoíris">
+        </div>
+      </div>
+    </div>
+
+    <svg class="wave-divider" viewBox="0 0 1200 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="presentation">
+      <defs>
+        <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#1A86B4"/>
+          <stop offset="45%" stop-color="#ED66BA"/>
+          <stop offset="75%" stop-color="#F4A93B"/>
+          <stop offset="100%" stop-color="#3FAE72"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#waveGrad)" d="M0,40 C200,90 400,0 600,30 C800,60 1000,10 1200,45 L1200,90 L0,90 Z"></path>
+    </svg>
+  </section>
+
+  <section class="section-alt" id="nosotros">
+    <div class="wrap about">
+      <div class="about-photo">
+        <img src="assets/photos/claudia.jpg" alt="Claudia Olarte, fundadora de Spa Arcoíris" loading="lazy">
+      </div>
+      <div class="about-copy">
+        <div class="eyebrow">Quién te recibe</div>
+        <h2>Claudia Olarte</h2>
+        <p>Empecé sola en 2018, con mis manos y muchas ganas de que cada persona saliera sintiéndose mejor de como llegó. Hoy, en Spa Arcoíris, sigo haciendo lo mismo: manicura, pedicura y pestañas — pero, sobre todo, un rato de verdad para desconectar.</p>
+        <p>Aquí no importa si vienes de una reunión o saliste corriendo de la oficina: el cuidado personal es para todos, mujeres y hombres por igual.</p>
+        <p class="signature">— Claudia, fundadora de Spa Arcoíris</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="wrap">
+      <div class="services-head">
+        <div class="eyebrow" style="justify-content:center; display:inline-flex;">Servicios</div>
+        <h2>Lo que hacemos por ti</h2>
+        <div class="ribbon-rule"></div>
+        <p style="color:var(--ink-soft)">Precios de referencia — el valor final puede variar según el largo, forma o diseño que elijas.</p>
+      </div>
+
+      <div class="price-groups">
+
+        <div class="price-card">
+          <div class="price-card-head">
+            <div class="icon-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1A86B4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12c0-4 2-8 5-9 1 3-1 5-1 7 3-2 6 0 6 3 0 4-3 7-7 7-3.5 0-6-3-6-6"/><path d="M7 12c-2 0-3 1-3 3"/></svg>
+            </div>
+            <h3>Manos &amp; Pies</h3>
+          </div>
+          <ul class="price-list">
+            <li class="price-row">
+              <span class="name">Manicura permanente</span>
+              <span class="fill"></span>
+              <span class="price">desde $18.000</span>
+            </li>
+            <li class="price-row">
+              <span class="name">Pedicura permanente</span>
+              <span class="fill"></span>
+              <span class="price">desde $22.000</span>
+            </li>
+            <li class="price-row">
+              <span class="name">Pedicura permanente<small>Con podología</small></span>
+              <span class="fill"></span>
+              <span class="price">desde $28.000</span>
+            </li>
+            <li class="price-row">
+              <span class="name">Dúo Arcoíris<small>Manicura &amp; pedicura permanente</small></span>
+              <span class="fill"></span>
+              <span class="price">desde $40.000</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="price-card">
+          <div class="price-card-head">
+            <div class="icon-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#ED66BA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c3-4 7-6 10-6s7 2 10 6c-3 4-7 6-10 6s-7-2-10-6z"/><circle cx="12" cy="12" r="2.4"/><path d="M12 6V3M17 7l1.6-2.2M7 7 5.4 4.8"/></svg>
+            </div>
+            <h3>Pestañas</h3>
+          </div>
+          <ul class="price-list">
+            <li class="price-row">
+              <span class="name">Lifting de pestañas<small>Con botox</small></span>
+              <span class="fill"></span>
+              <span class="price">desde $25.000</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="price-card">
+          <div class="price-card-head">
+            <div class="icon-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#F4A93B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19c4-1 7-4 7-8a7 7 0 0 0-14 0c0 4 3 7 7 8z"/><path d="M9 10.5c0-1.5 1-2.5 3-2.5s3 1 3 2.5"/></svg>
+            </div>
+            <h3>Uñas Especiales</h3>
+          </div>
+          <ul class="price-list">
+            <li class="price-row">
+              <span class="name">Kapping<small>Recubrimiento de uña natural</small></span>
+              <span class="fill"></span>
+              <span class="price">desde $12.000</span>
+            </li>
+            <li class="price-row">
+              <span class="name">Tratamiento de uñas<small>Para onicofagia</small></span>
+              <span class="fill"></span>
+              <span class="price">desde $20.000</span>
+            </li>
+            <li class="price-row">
+              <span class="name">Dual System</span>
+              <span class="fill"></span>
+              <span class="price">desde $30.000</span>
+            </li>
+            <li class="price-row">
+              <span class="name">Extensiones en Polygel</span>
+              <span class="fill"></span>
+              <span class="price">desde $30.000</span>
+            </li>
+          </ul>
+          <div class="price-extra"><strong>Diseños o pedrería</strong> — desde $1.000 adicional</div>
+        </div>
+
+        <div class="price-card">
+          <div class="price-card-head">
+            <div class="icon-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3FAE72" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9-9c-1.4-3 .5-6 3.5-6 2 0 3.5 1.3 4.5 3 .5-2 2.3-3.5 4.5-3.5 3 0 5 3 3.5 6-2 4.5-7 9.5-7 9.5z"/></svg>
+            </div>
+            <h3>Bienestar</h3>
+          </div>
+          <ul class="price-list">
+            <li class="price-row">
+              <span class="name">Reflexología</span>
+              <span class="fill"></span>
+              <span class="price">desde $12.000</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="price-note">¿No sabes cuál elegir? Cuéntanos qué buscas por WhatsApp y te recomendamos el tratamiento ideal para ti.</p>
+      <div style="text-align:center; margin-top:24px;">
+        <a class="btn btn-primary" href="https://wa.me/56965279358?text=Hola%20Claudia%2C%20quiero%20consultar%20por%20un%20servicio" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="wrap">
+      <div class="services-head">
+        <div class="eyebrow" style="justify-content:center; display:inline-flex;">Galería</div>
+        <h2>Nuestro espacio y trabajos</h2>
+        <div class="ribbon-rule"></div>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="assets/photos/manicura.jpg" alt="Manicura cat eye realizada en Spa Arcoíris" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/photos/pedicura.jpg" alt="Pedicura permanente blanca en Spa Arcoíris" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/photos/pestanas-resultado.jpg" alt="Resultado de lifting de pestañas en Spa Arcoíris" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/photos/nailart.jpg" alt="Diseño de uñas con nail art en Spa Arcoíris" loading="lazy">
+        </div>
+      </div>
+      <p class="gallery-note">📸 Síguenos en <a href="https://instagram.com/spa.arcoiris" target="_blank" rel="noopener">@spa.arcoiris</a> para ver más trabajos.</p>
+    </div>
+  </section>
+
+  <section id="testimonios">
+    <div class="wrap">
+      <div class="services-head">
+        <div class="eyebrow" style="justify-content:center; display:inline-flex;">Testimonios</div>
+        <h2>Lo que dicen quienes ya vinieron</h2>
+        <div class="ribbon-rule"></div>
+      </div>
+      <div class="testimonial">
+        <span class="quote-mark">&ldquo;</span>
+        <p class="quote">Tengo más de un año con Claudia y su manicura y pedicure, religiosamente todos los meses, y es un gusto estar con ella tanto por la calidad de su servicio como el buen trato que recibo en el local.</p>
+        <p class="who">Luz<span>Clienta hace más de 1 año</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="wrap">
+      <div class="services-head">
+        <div class="eyebrow" style="justify-content:center; display:inline-flex;">Preguntas frecuentes</div>
+        <h2>Antes de venir</h2>
+        <div class="ribbon-rule"></div>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>¿Necesito reservar hora antes de ir?</summary>
+          <p>Sí, agenda tu hora por WhatsApp o Instagram para asegurar tu horario y evitar esperas.</p>
+        </details>
+        <details>
+          <summary>¿Atienden a hombres?</summary>
+          <p>Sí. Spa Arcoíris está abierto a todas las personas — el cuidado personal no tiene género.</p>
+        </details>
+        <details>
+          <summary>¿Cuáles son los valores de los servicios?</summary>
+          <p>Puedes verlos en la sección de <a href="#servicios">Servicios</a> más arriba. Son precios desde, el valor final depende del largo, forma o diseño que elijas — te confirmamos todo por WhatsApp antes de tu cita.</p>
+        </details>
+        <details>
+          <summary>¿Dónde están ubicados?</summary>
+          <p>En Av. Nueva Providencia 2260, Local 96, Providencia — a pasos de la estación de Metro Los Leones.</p>
+        </details>
+        <details>
+          <summary>¿Qué días atienden?</summary>
+          <p>Lunes a viernes de 10:00 a 19:00 hrs, y sábados de 10:00 a 15:00 hrs. Domingos permanecemos cerrados.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap">
+      <div class="services-head">
+        <div class="eyebrow" style="justify-content:center; display:inline-flex;">Contacto</div>
+        <h2>Ven a conocernos</h2>
+        <div class="ribbon-rule"></div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="info-row">
+            <div class="icon-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1A86B4" stroke-width="1.8"><path d="M12 21s-6.5-6.2-6.5-11A6.5 6.5 0 0 1 12 3.5 6.5 6.5 0 0 1 18.5 10c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+            </div>
+            <div>
+              <h4>Dirección</h4>
+              <p>Av. Nueva Providencia 2260, Local 96, Providencia, RM — a pasos del Metro Los Leones.</p>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="icon-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#189291" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            </div>
+            <div>
+              <h4>Horarios</h4>
+              <p>Lunes a viernes: 10:00 – 19:00 hrs<br>Sábados: 10:00 – 15:00 hrs<br>Domingos: cerrado</p>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="icon-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#ED66BA" stroke-width="1.8"><path d="M21 15.5a2 2 0 0 1-2 2h-1a2 2 0 0 0-2 2v1a1 1 0 0 1-1.5.9C9 19.5 4.5 15 3.1 9.5A1 1 0 0 1 4 8h1a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2h.5a1 1 0 0 1 1 .8c.2 1 .6 2 1.1 2.9a1 1 0 0 1-.2 1.2l-1 .9a10 10 0 0 0 4.8 4.8l.9-1a1 1 0 0 1 1.2-.2c.9.5 1.9.9 2.9 1.1a1 1 0 0 1 .8 1v.5z"/></svg>
+            </div>
+            <div>
+              <h4>WhatsApp</h4>
+              <p><a href="https://wa.me/56965279358" target="_blank" rel="noopener">+56 9 6527 9358</a></p>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="icon-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#F4A93B" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+            </div>
+            <div>
+              <h4>Instagram</h4>
+              <p><a href="https://instagram.com/spa.arcoiris" target="_blank" rel="noopener">@spa.arcoiris</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-frame">
+          <iframe
+            src="https://maps.google.com/maps?q=Av.%20Nueva%20Providencia%202260%2C%20Providencia%2C%20Regi%C3%B3n%20Metropolitana&output=embed"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación Spa Arcoíris en Providencia">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="contact-cta">
+        <a class="btn btn-primary" href="https://wa.me/56965279358?text=Hola%20Claudia%2C%20quiero%20agendar%20una%20hora%20en%20Spa%20Arco%C3%ADris" target="_blank" rel="noopener">
+          Escríbenos por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="Spa Arcoíris">
+        <strong>Spa Arcoíris — Claudia Olarte</strong>
+      </div>
+      <div class="footer-social">
+        <a href="https://instagram.com/spa.arcoiris" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        </a>
+        <a href="https://wa.me/56965279358" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M21 15.5a2 2 0 0 1-2 2h-1a2 2 0 0 0-2 2v1a1 1 0 0 1-1.5.9C9 19.5 4.5 15 3.1 9.5A1 1 0 0 1 4 8h1a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2h.5a1 1 0 0 1 1 .8c.2 1 .6 2 1.1 2.9a1 1 0 0 1-.2 1.2l-1 .9a10 10 0 0 0 4.8 4.8l.9-1a1 1 0 0 1 1.2-.2c.9.5 1.9.9 2.9 1.1a1 1 0 0 1 .8 1v.5z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Spa Arcoíris. Todos los derechos reservados.</span>
+      <span>Hecho con cariño en Providencia 🌈</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
